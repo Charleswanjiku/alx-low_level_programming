@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+
 /**
  * main - main block
  * Description: Get a random number and print the number
  * and if it is positive, negative, or zero
  * Return: 0
  */
+
 int main(void)
 {
 int n;
@@ -19,4 +21,4 @@ printf("%i is negative\n", n);
 else
 printf("%i is zero\n", n);
 return (0);
-}	
+}
