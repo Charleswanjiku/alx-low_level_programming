@@ -9,21 +9,29 @@
 
 int _atoi(char *s)
 {
-	unsigned int res = 0, flag = 0;
+int i;
+int h, p;
 
-	while (*s != '\0')
-	{
-		if (*s > 47 && *s < 58)
-		{
-			res = res * 10 + *s - '0';
-			if (*(s + 1)  < 48 || *(s + 1) > 57)
-				break;
-		}
-		else if (*s == '-' && *(s + 1) > 47 && *(s + 1) < 58)
-			flag = 1;
-		s++;
-	}
-	if (flag > 0)
-		res *= -1;
-	return (res);
+h = 0;
+p = -1;
+for (i = 0; s[i] != '\0'; i++)
+{
+if (s[i] == '-')
+p *= -1;
+
+if (s[i] > 47 && s[i] < 58)
+{
+if (h < 0)
+h = (h * 10) - (s[i] - '0');
+else
+h = (s[i] - '0') * -1;
+
+if (s[i + 1] < 48 || s[i + 1] > 57)
+break;
+}
+}
+if (p < 0)
+h *= -1;
+
+return (h);
 }
