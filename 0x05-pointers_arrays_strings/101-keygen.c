@@ -4,19 +4,18 @@
 
 int main(void)
 {
-	int i = 0, acum = 2772;
+	int myrand;
+	int count;
+	int total;
 
 	srand(time(NULL));
-	i = 32 + rand() % (126 - 32);
-
-	while (acum != 0)
+	for (count = 0, total = 2772; total > 122; count++)
 	{
-		printf("%c", i);
-		acum = acum - i;
-		i = 32 + rand() % (126 - 32);
-
-		if (acum < 126 && acum > 32)
-			i = acum;
+		myrand = (rand() % 125) + 1;
+		printf("%c", myrand);
+		total -= myrand;
 	}
+	printf("%c", total);
+
 	return (0);
 }
