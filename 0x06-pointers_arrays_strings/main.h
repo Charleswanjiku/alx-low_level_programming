@@ -1,5 +1,5 @@
-#ifndef _HOLBERTON_H
-#define _HOLBERTON_H
+#ifndef _MAIN_H
+#define _MAIN_H
 
 int _putchar(char c);
 char *_strcat(char *dest, char *src);
