@@ -5,13 +5,14 @@
  * @s: string
  */
 
-void _put_recursion(char *s)
+void _puts_recursion(char *s)
 {
 	if (*s == '\0')
-		_putchar('\n');
-	else
 	{
-		_putchar(*s);
-		_put_recursion(++s);
+		_putchar('\n');
+		return;
 	}
+	_putchar(*s);
+	s++;
+	_puts_recursion(s);
 }
