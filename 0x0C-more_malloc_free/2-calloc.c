@@ -1,4 +1,23 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * _memset -  initializes n bytes of memory to x
+ * @ptr: initial adress
+ * @x: variable to initialize with
+ * @n: number of bytes to initialize
+ * Return: Return pointer char (so movements are 1 byte)
+ */
+
+char *_memset(char *ptr, int x, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+		ptr[i] = x;
+
+	return (ptr);
+}
 
 /**
  * _calloc - allocates memory for an array given number of elements and size
