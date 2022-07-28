@@ -21,24 +21,23 @@ char *_memset(char *ptr, int x, unsigned int n)
 
 /**
  * _calloc - allocates memory for an array given number of elements and size
- * @nmemb: number of elements
- * @size: size of each element
- * Return: Null if error, else pointer to allocated memory
+ * @nmemb: number of elements of array to allocate
+ * @size: size of elements
+ * Return: Pointer to allocated memory or normal process termination
+ * with a status value of 98
  */
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *p;
-	unsigned int i;
+	void *p;
 
-	if (nmemb <= 0 || size <= 0)
-		return (NULL);
+	if (nmemb == 0 || size == 0)
+		return (0);
 
 	p = malloc(nmemb * size);
-	if (p == NULL)
-		return (NULL);
-	for (i = 0; i < nmemb; i++)
-		p[i] = 0;
+	if (p == 0)
+		return (0);
+	_memset(p, 0, size * nmemb);
 
 	return (p);
 }
