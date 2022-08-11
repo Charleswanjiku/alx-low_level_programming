@@ -3,20 +3,23 @@
 
 /**
  * print_list - prints all the elements of a list_t list
- * @h: pointer to the start of the list
- * Return: number of nodes in the list
+ * @h: head of linked list
+ * Return: number of nodes 
  */
 
 size_t print_list(const list_t *h)
 {
-	const list_t *tmp;
-	unsigned int i;
+	const list_t *current;
+	size_t c;
 
-	tmp = h;
-	for (i = 0; tmp; i++)
+	c = 0;
+	current = h;
+	while (current != NULL)
 	{
-		printf("[%u] %s\n", tmp->len, tmp->str);
-		tmp = tmp->next;
+		printf("[%d] %s\n", current->len, current->str);
+		current = current->next;
+		c++;
 	}
-	return (i);
+
+	return (c);
 }
