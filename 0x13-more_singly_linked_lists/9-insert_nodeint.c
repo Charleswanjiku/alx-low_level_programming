@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * insert_nodeint_at_index - insert a new node at a given position
@@ -11,44 +10,39 @@
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 {
-	listint_t *new;
-	listint_t *current;
-	unsigned int count;
+	unsigned int i = 0;
+	listint_t *node, *node_temporal;
 
-	if (head == NULL)
+	if (!head && !*head)
 		return (NULL);
-
-	current = *head;
-	for (count = 1; current && count < index; count++)
+	node_temporal = *head;
+	if (idx == i)
 	{
-		current = current->next;
-		if (current == NULL)
+		node = malloc(sizeof(listint_t));
+		if (!node)
 			return (NULL);
-	}
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-	{
-		free(new);
-		return (NULL);
-	}
-	new->n = n;
-
-	if (index == 0)
-	{
-		*head = new;
-		new->next = current;
-	}
-	if (current->next)
-	{
-		new->next = current->next;
-		current->next = new;
+		node->n = n;
+		node->next = *head;
+		*head = node;
+		return (node);
 	}
 	else
 	{
-		new->next = NULL;
-		current->next = new;
+		while (node_temporal)
+		{
+			if (idx == i + 1)
+			{
+				node = malloc(sizeof(listint_t));
+				if (!node)
+					return (NULL);
+				node->n = n;
+				node->next = node_temporal->next;
+				node_temporal->next = node;
+				return (node);
+			}
+			node_temporal = node_temporal->next;
+			i++;
+		}
 	}
-
-	return (new);
+	return (NULL);
 }
