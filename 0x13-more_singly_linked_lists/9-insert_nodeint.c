@@ -1,48 +1,49 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index - insert a new node at a given position
- * @head: double pointer to head
- * @index: insert node at this index, starting count at 0
- * @n: value to store in node
- * Return: Address of new node or NULL if failed
+ * insert_nodeint_at_index - insert a node in a given position.
+ * @head: data type pointer the head/next node
+ * @index: data type unsigned int index
+ * @n: data type int
+ * Return: new_node
  */
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 {
-	unsigned int i = 0;
-	listint_t *node, *node_temporal;
+	listint_t *tmp_node, *new_node;
+	unsigned int counter = 0;
 
-	if (!head && !*head)
+	if (head == NULL && *head == NULL)
 		return (NULL);
-	node_temporal = *head;
-	if (idx == i)
+
+	tmp_node = *head;
+	if (idx == 0)
 	{
-		node = malloc(sizeof(listint_t));
-		if (!node)
+		new_node = malloc(sizeof(listint_t));
+
+		if (new_node == 0)
 			return (NULL);
-		node->n = n;
-		node->next = *head;
-		*head = node;
-		return (node);
+		new_node->n = n;
+		new_node->next = tmp_node;
+		*head = new_node;
+		return (new_node);
 	}
-	else
+	while (tmp_node)
 	{
-		while (node_temporal)
+		if (counter + 1 == idx)
 		{
-			if (idx == i + 1)
-			{
-				node = malloc(sizeof(listint_t));
-				if (!node)
-					return (NULL);
-				node->n = n;
-				node->next = node_temporal->next;
-				node_temporal->next = node;
-				return (node);
-			}
-			node_temporal = node_temporal->next;
-			i++;
+			new_node = malloc(sizeof(listint_t));
+
+			if (new_node == 0)
+				return (NULL);
+			new_node->n = n;
+			new_node->next = tmp_node->next;
+			tmp_node->next = new_node;
+			return (new_node);
 		}
+		tmp_node = tmp_node->next;
+		counter++;
+
 	}
 	return (NULL);
 }
