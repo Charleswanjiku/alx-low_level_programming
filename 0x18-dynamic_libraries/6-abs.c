@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * -abs - outputs absolut value of integer input
- *  @n: integer to check
- *  Return: n
+ * _abs - outputs absolut value of integer input
+ * @n: integer to check
+ * Return: n
  */
 
 int _abs(int n)
